@@ -23,7 +23,7 @@ function appMenu() {
         //CREATE OBJECTS OF QUESTIONS HERE FOR MANAGER
         //
         }).then(answers => {
-            const manager = new Manager(answers.manangerName, answers.manangerId, answers.managersEmail, answers.managerOfficeNumber):
+            const manager = new Manager(answers.manangerName, answers.manangerId, answers.managersEmail, answers.managerOfficeNumber);
             teamMembers.push(manager);
             idArray.push(answers.managerId);
             fs.createReadStream();
@@ -72,7 +72,7 @@ function appMenu() {
             //3. ADD (PUSH) THE ENINGEER ID TO THE idArray ARRAY
             //
             
-            createteaM();
+            createTeam();
         });
     }
 
@@ -90,8 +90,17 @@ function appMenu() {
             //3. ADD (PUSH) THE INTERN ID TO THE idArray ARRAY
             //
             
-            createteaM();
+            createTeam();
         });
     }
 
+    function buildTeam() {
+        if(!fs.existsSync(OUTPUT_DIR)){
+            fs.mkdirSync(OUTPUT_DIR)
+        }
+        fs.writeFileSync(outputPath, redner(teamMembers), "uft-8");
+    }
+    createManager();
 }
+
+appMenu();
