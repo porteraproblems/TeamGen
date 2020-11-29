@@ -35,9 +35,14 @@ function appMenu() {
                 type: "input",
                 name: "managerEmail",
                 message: "What is your email address?"
+            },
+            {
+                type: "input",
+                name: "officeNumber",
+                message: "What is your office telephone number?"
             }
         ]).then(answers => {
-            const manager = new Manager(answers.manangerName, answers.manangerId, answers.managersEmail, answers.managerOfficeNumber);
+            const manager = new Manager(answers.manangerName, answers.manangerId, answers.managersEmail, answers.managerNumber);
             teamMembers.push(manager);
             idArray.push(answers.managerId);
             fs.createReadStream();
@@ -92,7 +97,7 @@ function appMenu() {
                 name: "engineerEmail",
                 message: "What is your email address?"
             }
-            //
+
         ]).then(answers => {
             //
             //YOUR CODE HERE
@@ -148,7 +153,7 @@ function appMenu() {
         if (!fs.existsSync(OUTPUT_DIR)) {
             fs.mkdirSync(OUTPUT_DIR)
         }
-        fs.writeFileSync(outputPath, redner(teamMembers), "uft-8");
+        fs.writeFileSync(outputPath, render(teamMembers), "uft-8");
     }
     createManager();
 }
